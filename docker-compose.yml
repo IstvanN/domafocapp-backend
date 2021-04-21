@@ -7,3 +7,17 @@ services:
         container_name: domafocapp-backend
         ports:
             - "8080:8080"
+        environment:
+            DATABASE_URL: "postgres://domafoca:foca@postgres:5432/domafocapp"
+        depends_on:
+            - postgres
+    
+    postgres:
+        build:
+            context: local_dev
+            dockerfile: domafocapp-psql.Dockerfile
+        container_name: domafocapp-postgres
+        environment:
+            POSTGRES_USER: "domafoca"
+            POSTGRES_PASSWORD: "foca"
+            POSTGRES_DB: "domafocapp"
