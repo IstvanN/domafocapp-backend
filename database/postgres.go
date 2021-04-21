@@ -6,6 +6,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/IstvanN/domafocapp-backend/models"
 	"github.com/IstvanN/domafocapp-backend/services"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -41,6 +42,7 @@ func StartupPostgres() {
 		}
 	}
 
+	postgresDB.AutoMigrate(&models.Tournament{})
 	log.Println("successfully connected to Postgres DB!")
 }
 
