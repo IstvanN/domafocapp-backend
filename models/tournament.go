@@ -12,4 +12,5 @@ type Tournament struct {
 	Note           string
 	NumberOfRounds int
 	Teams          []Team
+	Fixtures       []Fixture
 }
