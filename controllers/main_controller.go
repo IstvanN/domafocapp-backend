@@ -10,6 +10,7 @@ import (
 func StartupRouter() *mux.Router {
 	router := mux.NewRouter()
 	router.HandleFunc("/", welcomeHandler).Methods(http.MethodGet, http.MethodOptions)
+	registerTournamentRoutes(router)
 	return router
 }
 
