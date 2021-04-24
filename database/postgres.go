@@ -44,6 +44,8 @@ func StartupPostgres() {
 
 	postgresDB.AutoMigrate(&models.Tournament{})
 	postgresDB.AutoMigrate(&models.Team{})
+	postgresDB.AutoMigrate(&models.Footballer{})
+	postgresDB.AutoMigrate(&models.Participant{})
 
 	log.Println("successfully connected to Postgres DB!")
 }
