@@ -43,6 +43,8 @@ func StartupPostgres() {
 	}
 
 	postgresDB.AutoMigrate(&models.Tournament{})
+	postgresDB.AutoMigrate(&models.Team{})
+
 	log.Println("successfully connected to Postgres DB!")
 }
 

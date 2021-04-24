@@ -11,4 +11,5 @@ type Tournament struct {
 	Date           time.Time
 	Note           string
 	NumberOfRounds int
+	Teams          []Team
 }
