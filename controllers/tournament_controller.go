@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/IstvanN/domafocapp-backend/models"
 	"github.com/IstvanN/domafocapp-backend/repositories"
 	"github.com/IstvanN/domafocapp-backend/security"
 	"github.com/gorilla/mux"
@@ -28,13 +27,19 @@ func allTournamentsHandler(w http.ResponseWriter, r *http.Request) {
 
 func createTournament(w http.ResponseWriter, r *http.Request) {
 	type requestedBody struct {
-		Note           string        `json:"note"`
-		NumberOfRounds int           `json:"numberOfRounds"`
-		Teams          []models.Team `json:"teams"`
+		Note           string `json:"note"`
+		NumberOfRounds int    `json:"numberOfRounds"`
+		Teams          []struct {
+			TeamName    string `json:"teamName"`
+			Footballers []struct {
+				FootballerName string `json:"footballerName"`
+				ParticipantID  uint   `json:"participantID"`
+			} `json:"footballers"`
+		} `json:"teams"`
 	}
 
 	var rb requestedBody
-	if err := json.NewDecoder(r.Body).Decode(&rb); err != nil || rb.NumberOfRounds != 0 {
+	if err := json.NewDecoder(r.Body).Decode(&rb); err != nil || rb.NumberOfRounds == 0 {
 		security.LogErrorAndSendHTTPError(w, err, http.StatusUnprocessableEntity)
 		return
 	}
