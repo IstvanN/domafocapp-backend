@@ -15,6 +15,6 @@ func main() {
 	router := controllers.StartupRouter()
 
 	database.StartupPostgres()
-	log.Println("domafocapp-backend is up and running on port :8080")
+	log.Println("domafocapp-backend is up and running on port", port)
 	log.Fatal(http.ListenAndServe(port, router))
 }

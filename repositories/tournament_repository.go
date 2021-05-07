@@ -17,11 +17,12 @@ func GetAllTournaments() ([]models.Tournament, error) {
 	return tournaments, nil
 }
 
-func CreateTournament(note string, noOfRounds int) error {
+func CreateTournament(note string, noOfRounds int, teams []models.Team) error {
 	newTournament := models.Tournament{
 		Date:           time.Now(),
 		Note:           note,
 		NumberOfRounds: noOfRounds,
+		Teams:          teams,
 	}
 
 	result := database.GetPostgresDB().Create(&newTournament)

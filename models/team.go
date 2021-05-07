@@ -4,7 +4,7 @@ import "gorm.io/gorm"
 
 type Team struct {
 	gorm.Model
-	Name         string
-	TournamentID uint
-	Footballers  []Footballer
+	Name         string       `json:"name"`
+	TournamentID uint         `json:"tournamentID"`
+	Footballers  []Footballer `json:"footballers"`
 }

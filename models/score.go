@@ -4,6 +4,6 @@ import "gorm.io/gorm"
 
 type Score struct {
 	gorm.Model
-	FootballerID uint
-	FixtureID    uint
+	FootballerID uint `json:"footballerID"`
+	FixtureID    uint `json:"fixtureID"`
 }
