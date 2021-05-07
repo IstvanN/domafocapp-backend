@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -16,4 +17,9 @@ func StartupRouter() *mux.Router {
 
 func welcomeHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Welcome to DomafocApp!"))
+}
+
+func writeMessage(w http.ResponseWriter, msg string) {
+	finalMessage := fmt.Sprintf("{\"message\": \"%s\"}", msg)
+	w.Write([]byte(finalMessage))
 }
