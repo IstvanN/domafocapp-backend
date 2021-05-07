@@ -19,7 +19,7 @@ func GetAllTournaments() ([]models.Tournament, error) {
 
 func CreateTournament(note string, noOfRounds int, teams []models.Team) error {
 	newTournament := models.Tournament{
-		Date:           time.Now(),
+		Date:           time.Now().Format("2006-01-02"),
 		Note:           note,
 		NumberOfRounds: noOfRounds,
 		Teams:          teams,
